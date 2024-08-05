@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Editing <%= trip.title %></title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Edit <%= trip.title %> at <%= trip.NAME %></h1>
+    <form 
+      action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=PUT"
+      method="POST"
+    >
+      <label for="NAME">NAME:</label>
+      <input 
+        type="text" 
+        name="NAME" 
+        id="NAME" 
+        value="<%= trip.NAME %>"
+      >
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" value="<%= trip.title %>">
+      <label for="notes">Notes:</label>
+      <textarea name="notes" id="notes"><%= trip.notes %></textarea>
+      <label for="postingLink">Posting Link:</label>
+      <input 
+        type="text" 
+        name="postingLink" 
+        id="postingLink" 
+        value="<%= trip.postingLink %>"
+      >
+      <label for="status">Status:</label>
+      <select id="status" name="status">
+        <option 
+          value="bh" 
+          <%= trip.status === "bh" ? "selected" : "" %>
+        >
+          bh
+        </option>
+        <option 
+          value="bh2" 
+          <%= trip.status === "bh2" ? "selected" : "" %>
+        >
+          bh2
+        </option>
+        <option 
+          value="bh3" 
+          <%= trip.status === "bh3" ? "selected" : "" %> 
+        >
+          bh3
+        </option>
+        <option 
+          value="rejected" 
+          <%= trip.status === "rejected" ? "selected" : "" %>
+        >
+          Rejected
+        </option>
+        <option
+          value="accepted"
+          <%= trip.status === "accepted" ? "selected" : "" %>
+        >
+          Accepted
+        </option>
+      </select>
+      <button type="submit">Update trip</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title><%= trip.title %></title>
+  </head>
+  <body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>trip for <%= trip.NAME %> </h1>
+
+    <% if (trip.notes) { %>
+    <p>Notes: <%= trip.notes %></p>
+
+
+    <% } %>
+
+    <p>place: <%= trip.status %></p>
+    <p>start form: <%= trip.date %></p>
+    <p>end at: <%= trip.date2 %></p>
+
+
+    <a href="/users/<%= user._id %>/trips/<%= trip._id %>/edit">Edit this trip</a>
+
+    <form
+      action="/users/<%= user._id %>/trips/<%= trip._id %>?_method=DELETE"
+      method="post">
+      <button type="submit">Delete this trip</button>
+    </form>
+  </body>
+</html>
