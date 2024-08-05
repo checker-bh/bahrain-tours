@@ -34,35 +34,25 @@
       <label for="status">Status:</label>
       <select id="status" name="status">
         <option 
-          value="bh" 
-          <%= trip.status === "bh" ? "selected" : "" %>
+          value="Bahrain" 
+          <%= trip.status === "Bahrain" ? "selected" : "" %>
         >
-          bh
+        Bahrain
         </option>
         <option 
-          value="bh2" 
-          <%= trip.status === "bh2" ? "selected" : "" %>
+          value="Kuwait" 
+          <%= trip.status === "Kuwait" ? "selected" : "" %>
         >
-          bh2
+        Kuwait
         </option>
         <option 
-          value="bh3" 
-          <%= trip.status === "bh3" ? "selected" : "" %> 
+          value="Oman" 
+          <%= trip.status === "Oman" ? "selected" : "" %> 
         >
-          bh3
+        Oman
         </option>
-        <option 
-          value="rejected" 
-          <%= trip.status === "rejected" ? "selected" : "" %>
-        >
-          Rejected
-        </option>
-        <option
-          value="accepted"
-          <%= trip.status === "accepted" ? "selected" : "" %>
-        >
-          Accepted
-        </option>
+      
+    
       </select>
       <button type="submit">Update trip</button>
     </form>

@@ -25,6 +25,7 @@ router.post('/', async (req, res) => {
     req.body.date = new Date(req.body.date)
     currentUser.trips.push(req.body)
     await currentUser.save()
+    console.log(currentUser)
     res.redirect(`/users/${currentUser._id}/trips`)
   } catch (error) {
     console.log(error)
@@ -69,5 +70,22 @@ router.get('/:tripId/edit', async (req, res) => {
     res.redirect('/')
   }
 })
+
+
+router.put('/:tripId', async (req, res) => {
+  try {
+    const currentUser = await User.findById(req.session.user._id);
+    const trip = currentUser.trips.id(req.params.tripId);
+    trip.set(req.body);
+    await currentUser.save();
+    res.redirect(
+      `/users/${currentUser._id}/trips/${req.params.tripId}`
+    );
+  } catch (error) {
+    console.log(error);
+    res.redirect('/');
+  };
+});
+
 
 module.exports = router
